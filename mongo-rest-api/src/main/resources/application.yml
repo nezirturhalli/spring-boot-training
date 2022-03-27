@@ -1,0 +1,22 @@
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: db_mongo_rest_api
+      username: root
+      password: example
+      authentication-database: admin
+  mvc:
+    servlet:
+      path: /api/v1
+
+
+server:
+  address: localhost
+  port: 12210
+  servlet:
+    context-path: /mongodb_user
+
+#swagger path
+#http://localhost:12210/mongodb_user/api/v1/swagger-ui/index.html
