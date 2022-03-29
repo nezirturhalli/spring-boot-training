@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  elasticsearch:
+    image: elasticsearch:8.1.1
+    container_name: elasticsearch_training
+    ports:
+      - '9200:9200'
+      - '9300:9300'
+    environment:
+      - discovery.type=single-node
+
