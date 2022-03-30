@@ -14,7 +14,7 @@ spring:
 
 server:
   address: localhost
-  port: 12210
+  port: 12250
   servlet:
     context-path: /mongodb_user
 

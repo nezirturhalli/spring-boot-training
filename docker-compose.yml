@@ -1,0 +1,46 @@
+version: '3.8'
+services:
+
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - "8081:8081"
+    networks:
+      - mongo
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+      ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/db_mongo_rest_api?authSource=admin
+
+  elasticsearch:
+    image: elasticsearch:8.1.1
+    container_name: elasticsearch_training
+    ports:
+      - '9200:9200'
+      - '9300:9300'
+    networks:
+      - mongo
+    environment:
+      - discovery.type=single-node
+networks:
+  mongo:
+    driver: bridge
+
+volumes:
+  mongo:
+  mongo-express:
+  elasticsearch:
+
+
